@@ -60,7 +60,7 @@ class App extends Component {
         </div>
         </div>
         <div className="container">
-        <ListOfStuff/>
+        {/*<ListOfStuff/>*/}
           {this.state.alert}
           <InputBox addTask={this.addTask} />
           <TaskList taskList={this.state.taskList} deleteTask={this.deleteTask} />
@@ -77,7 +77,9 @@ class InputBox extends Component {
     this.state = {text:''}
   }
 
-  addItem = () => {
+  addItem = (e) => {
+    e.preventDefault();
+
     if (this.state.text.length > 0) {
       // add task to list
       this.props.addTask(this.state.text)
@@ -94,12 +96,12 @@ class InputBox extends Component {
     return (
  
     <div className="todo-list">
-      <FormGroup bsSize="large" onSubmit={this.addItem} >
-      <InputGroup >
-      <FormControl value={this.state.text} type="text" onChange={this.handleChange} autoFocus placeholder="I need to..."></FormControl>
-        <InputGroupButton><Glyphicon glyph="align-left" /><Button id="submit-btn" bsStyle="primary" onClick={this.addItem} value="submit">Add Task</Button></InputGroupButton>
+      <form onSubmit={this.addItem} >
+      <InputGroup>
+      <FormControl id="main-input" value={this.state.text} type="text" onChange={this.handleChange} autoFocus placeholder="I need to..."></FormControl>
+        <InputGroupButton><Button id="submit-btn" bsStyle="primary" onClick={this.addItem} value="submit">Add Task</Button></InputGroupButton>
       </InputGroup>
-      </FormGroup>
+      </form>
     </div>
 
     );

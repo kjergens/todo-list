@@ -23,6 +23,9 @@
   to { transform: rotate(360deg); }
 }
 
+.remove-btn: {
+  font-style: bold;
+}
 
 .todo-list {
   margin: 50px auto;
@@ -33,9 +36,16 @@
   padding: 12px;
 }
 
+#main-input {
+  height: 46px;
+}
+
 .listItem {
   display: flex;
   justify-content: space-between;
 }
 
-
+.alert {
+  width: 50%;
+  margin: 0 auto;
+}
